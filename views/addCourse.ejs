@@ -1,0 +1,17 @@
+<%- include('partials/header') %>
+<div class="container">
+    <form action="/add" method="post">
+        <div class="form-group">
+            <label for="name">Judul Course</label> <br>
+            <input type="text" name="name"> <br>
+            <label for="label">Label Course</label> <br>
+            <input type="text" name="label"> <br>
+            <label for="price">Harga Course</label> <br>
+            <input type="text" name="price"> <br>
+            <br><br>
+            <button type="submit">+ Tambah Course</button>
+        </div>
+    </form>
+</div>
+
+<%- include('partials/footer') %> 
