@@ -1,17 +1,21 @@
 <%- include('partials/header') %>
 <div class="container">
-    <form action="/add" method="post">
-        <div class="form-group">
-            <label for="name">Judul Course</label> <br>
-            <input type="text" name="name"> <br>
-            <label for="label">Label Course</label> <br>
-            <input type="text" name="label"> <br>
-            <label for="price">Harga Course</label> <br>
-            <input type="text" name="price"> <br>
-            <br><br>
-            <button type="submit">+ Tambah Course</button>
-        </div>
-    </form>
+    <% if (user.role == 'admin') { %>
+        <form action="/course/add" method="post">
+            <div class="form-group">
+                <label for="name">Judul Course</label> <br>
+                <input type="text" name="name" class="form-control"> <br>
+                <label for="label">Label Course</label> <br>
+                <input type="text" name="label" class="form-control"> <br>
+                <label for="price">Harga Course</label> <br>
+                <input type="text" name="price" class="form-control"> <br>
+                <br><br>
+                <button type="submit" class="btn btn-primary">+ Tambah Course</button>
+            </div>
+        </form> 
+    <% } else { %>
+        <h2 class="text-center">Anda Tidak Memiliki Hak Otorisasi</h2>
+    <% } %>
 </div>
 
 <%- include('partials/footer') %> 
