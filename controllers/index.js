@@ -1,10 +1,10 @@
 const {User, Course} = require('../models')
-const user = require('../models/user')
+const format = require('../helpers/currency')
 class Controller {
     static show(req, res){
         Course.findAll({order : [['id','ASC']]})
         .then(data=>{
-            res.render('courses', {data})
+            res.render('courses', {data,format})
             
         })
         .catch(err=>{
@@ -15,7 +15,7 @@ class Controller {
     static showCourse(req, res){
         Course.findByPk(+req.params.id)
         .then((data)=>{
-            res.render('showCourse', {data})
+            res.render('showCourse', {data,format})
         })
         .catch((err)=>{
             res.send(err)

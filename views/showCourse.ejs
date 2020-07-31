@@ -6,7 +6,7 @@
     <a href="/course/<%= data.id %> /edit" class="btn btn-secondary">Edit</a>
     <p>
         Label : <%= data.label %> <br>
-        Price this course : <%= data.price %>
+        Price this course : <%= format(data.price) %>
     </p>
     <br><br><br>
     <a href="/course/<%= data.id %> /delete" class="btn btn-danger">Delete This Course</a>
