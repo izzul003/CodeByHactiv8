@@ -1,10 +1,10 @@
 const route = require('express').Router()
-const Controller = require('../controllers')
+const usersRoute = require('./usersRoute')
 
 route.get('/', (err,res)=>{
     res.send('Rencana tampilan semua course')   
 })
 
-route.get('/add', Controller.addCourse)
+route.use('/users', usersRoute)
 
 module.exports = route

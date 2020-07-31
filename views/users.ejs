@@ -1,0 +1,26 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %> 
+<h1>Course List</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Role</th>
+            <th>Full Name</th>
+            <th>Courses</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% users.forEach(user => { %>
+            <tr>
+                <td><%= user.role %></td>
+                <td><%= fullName(user.first_name, user.last_name) %></td>
+                <td><= user.Course.name %></td>
+                <td>
+                    <a href="#"><input type="button" value="Add Course"></a>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
+<%- include('partials/footer') %> 
