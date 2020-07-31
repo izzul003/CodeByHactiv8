@@ -1,12 +1,23 @@
 const {User, Course} = require('../models')
+const user = require('../models/user')
 class Controller {
     static show(req, res){
-        Course.findAll()
+        Course.findAll({order : [['id','ASC']]})
         .then(data=>{
             res.render('courses', {data})
             
         })
         .catch(err=>{
+            res.send(err)
+        })
+    }
+
+    static showCourse(req, res){
+        Course.findByPk(+req.params.id)
+        .then((data)=>{
+            res.render('showCourse', {data})
+        })
+        .catch((err)=>{
             res.send(err)
         })
     }
@@ -41,6 +52,56 @@ class Controller {
         })
     }
 
+    static editCourse(req, res){
+        let course = null 
+        Course.findByPk(+req.params.id)
+        .then(data=>{
+            course = data
+            return User.findOne({
+                where: {
+                    id: +req.session.userId
+                }
+            })
+        })
+        .then((user)=>{
+            res.render('editCourse', {course, user})
+        })
+        .catch(err=>{
+            res.send(err)
+        })
+    }
+
+    static editCoursePost(req, res){
+        const {name, label, price} = req.body
+        let updateCourse = {
+            name,
+            label,
+            price
+        }
+        Course.update(updateCourse,{
+            where: {
+                id: +req.params.id
+            }
+        })
+        .then(()=>{
+            res.redirect('/')
+        })
+        .catch((err)=>{
+            res.send(err)
+        })
+    }
+
+    static deletCourse(req,res){
+        Course.destroy({where : {
+            id : +req.params.id
+        }})
+        .then(()=>{
+            res.redirect('/')
+        })
+        .catch((err)=>{
+            res.send(err)
+        })
+    }
     static registrasiUser(req, res){
         res.render('form-registrasi')
     }
@@ -96,6 +157,8 @@ class Controller {
         req.session.destroy()
         res.redirect('/')
     }
+
+
 
 }
 

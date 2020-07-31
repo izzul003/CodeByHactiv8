@@ -1,0 +1,15 @@
+<%- include('partials/header') %>
+<div class="container">
+    <h2 class="text-center"><%= data.name %> </h2>
+    
+    <br><br><br><br><br><br><br><br>
+    <a href="/course/<%= data.id %> /edit" class="btn btn-secondary">Edit</a>
+    <p>
+        Label : <%= data.label %> <br>
+        Price this course : <%= data.price %>
+    </p>
+    <br><br><br>
+    <a href="/course/<%= data.id %> /delete" class="btn btn-danger">Delete This Course</a>
+</div>
+
+<%- include('partials/footer') %> 
