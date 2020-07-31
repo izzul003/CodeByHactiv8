@@ -41,7 +41,8 @@ class Controller {
         let newCourse = {
             name,
             label,
-            price
+            price,
+            // gambar
         }
         Course.create(newCourse)
         .then(()=>{
