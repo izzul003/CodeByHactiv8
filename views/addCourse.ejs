@@ -1,7 +1,7 @@
 <%- include('partials/header') %>
 <div class="container">
     <% if (user.role == 'admin') { %>
-        <form action="/course/add" method="post" enctype="multipart/form-data">
+        <form action="/course/add" method="post">
             <div class="form-group">
                 <label for="name">Judul Course</label> <br>
                 <input type="text" name="name" class="form-control"> <br>
@@ -9,8 +9,8 @@
                 <input type="text" name="label" class="form-control"> <br>
                 <label for="price">Harga Course</label> <br>
                 <input type="text" name="price" class="form-control"> <br>
-                <label for="gambar">Gambar Course</label> <br>
-                <input type="file" name="gambar"> <br>
+                <!-- <label for="gambar">Gambar Course</label> <br>
+                <input type="file" name="gambar"> <br> -->
                 <br><br>
                 <button type="submit" class="btn btn-primary">+ Tambah Course</button>
             </div>

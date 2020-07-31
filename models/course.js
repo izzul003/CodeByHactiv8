@@ -21,5 +21,11 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Course',
   });
+  Course.addHook('beforeCreate', (course, options)=>{
+    if(course.label == ''){
+      course.label = 'Belum Dilabeli'
+    }
+  })
+
   return Course;
 };
